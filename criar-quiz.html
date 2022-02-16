@@ -19,14 +19,28 @@
     </header>
 
     <main>
-        <h1>Comece pelo começo</h1>
-        <section>
-            <input type="text" class="input-titulo" placeholder="Título do seu quizz">
-            <input type="url" class="input-img" placeholder="URL da imagem do seu quizz">
-            <input type="number" class="input-numeroquestoes" placeholder="Quantidade de perguntas do quizz">
-            <input type="number" class="input-numeroniveis" placeholder="Quantidade de níveis do quizz">
-        </section>
-        <button><p>Prosseguir pra criar perguntas</p></button>
+        <div class="criar-tela1">
+            <h1>Comece pelo começo</h1>
+            <section>
+                <input type="text" class="input-titulo" placeholder="Título do seu quizz" minlength="20" maxlength="65" required>
+                <p class="hidden">Faltam caracteres!</p>
+                <input type="url" class="input-img" placeholder="URL da imagem do seu quizz" required>
+                <p class="hidden">O valor informado não é uma URL válida</p>
+                <input type="number" class="input-numeroquestoes" placeholder="Quantidade de perguntas do quizz" min="3" required>
+                <p class="hidden">O quizz deve ter no mínimo 3 perguntas</p>
+                <input type="number" class="input-numeroniveis" placeholder="Quantidade de níveis do quizz" min="2" required>
+                <p class="hidden">O quizz deve ter no mínimo 2 níveis</p>
+            </section>
+            <button onclick="CriarTela1()" type="submit"><p>Prosseguir pra criar perguntas</p></button>
+        </div>
+
+        <div class="criar-tela2 hidden">
+
+
+        </div>
     </main>
+
+    <!--Scripts-->
+    <script src="script/criar-quiz.js"></script>
 </body>
 </html>
