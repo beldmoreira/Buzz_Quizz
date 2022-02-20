@@ -26,7 +26,7 @@ function form1DataValidation(){
         numberOfQuestions = parseInt(document.querySelector(".input-numberquestions").value)
         numberOfLevels = parseInt(document.querySelector(".input-numberlevels").value)
         quizzCreated.title = document.querySelector(".input-name").value;
-        quizzCreated.image = document.querySelector(".input-img").value
+        quizzCreated.image = document.querySelector(".input-img").value;
         createFirstScreen();
     })
     
@@ -105,11 +105,6 @@ function printLevels(){
             </section> <!--Fim level-->
         `
     }    
-}
-
-
-function form1DataValidation(){
-    
 }
 
 function checkCharacters(){
