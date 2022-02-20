@@ -1,9 +1,9 @@
-body{
+/*body{
     font-family: 'Roboto', sans-serif;
     background: #FAFAFA;
 }
 
-/*Top*/
+
 header{
     height: 69px;
     width: 100%;
@@ -23,7 +23,7 @@ header h1{
     font-weight: bold;
     font-size: 37px;
     color: #FFFFFF;
-}
+}*/
 
 /*Main*/
 
@@ -153,8 +153,3 @@ textarea{
     color: #FFFFFF;
 }
 
-/*Utility*/
-
-.hidden{
-    display: none;
-}

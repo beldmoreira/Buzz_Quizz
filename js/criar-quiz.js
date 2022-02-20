@@ -107,6 +107,11 @@ function printLevels(){
     }    
 }
 
+
+function form1DataValidation(){
+    
+}
+
 function checkCharacters(){
     const titles = document.querySelectorAll(".input-question-text");
     for(let i=0; i < numberOfQuestions; i++){

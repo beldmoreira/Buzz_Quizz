@@ -1,10 +1,10 @@
 const API ="https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes";
 const firstScreen = document.querySelector(".first-screen");
-const lastScreen = document.querySelector(".last-screen");
+const lastScreen = document.querySelector(".create-quizz");
 
-const CreateQuizz=()=>{
-lastScreen.classList.remove("hidden");
-firstScreen.classList.add("hidden");
+function CreateQuizz(){
+    firstScreen.classList.add("hidden");
+    lastScreen.classList.remove("hidden");
 }
 
 function getQuizzes(){
