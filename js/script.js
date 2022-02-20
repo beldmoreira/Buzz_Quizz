@@ -75,10 +75,10 @@ function checkingQuizzesExistence (){
                             </svg>
                         </div>
                     </div>`  
-                     });
-                     promise.catch((response)=>{
-                         console.log("Erro - Seus Quizzes");
-                     });   
+                    });
+                    promise.catch((response)=>{
+                        console.log("Erro - Seus Quizzes");
+                    });   
             }
         }
         
@@ -86,7 +86,7 @@ function checkingQuizzesExistence (){
 
 }
 checkingQuizzesExistence();
-  
+
 function buildingQuizzLayout(quizz){
     const card = document.createElement("div"); 
     const quizzImage = `<img class="quizz-image" src ="${quizz.image}">`;

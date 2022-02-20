@@ -18,29 +18,40 @@
         <h1>BuzzQuizz</h1>
     </header>
 
-    <main>
-        <div class="criar-tela1">
+    <div class="create-quizz">
+        <div class="create-screen1">
             <h1>Comece pelo começo</h1>
-            <section>
-                <input type="text" class="input-titulo" placeholder="Título do seu quizz" minlength="20" maxlength="65" required>
-                <p class="hidden">Faltam caracteres!</p>
+            <form method="GET" class="form-screen1">
+                <input type="text" class="input-name" placeholder="Título do seu quizz" minlength="20" maxlength="65" required>
                 <input type="url" class="input-img" placeholder="URL da imagem do seu quizz" required>
-                <p class="hidden">O valor informado não é uma URL válida</p>
-                <input type="number" class="input-numeroquestoes" placeholder="Quantidade de perguntas do quizz" min="3" required>
-                <p class="hidden">O quizz deve ter no mínimo 3 perguntas</p>
-                <input type="number" class="input-numeroniveis" placeholder="Quantidade de níveis do quizz" min="2" required>
-                <p class="hidden">O quizz deve ter no mínimo 2 níveis</p>
-            </section>
-            <button onclick="CriarTela1()" type="submit"><p>Prosseguir pra criar perguntas</p></button>
+                <input type="number" class="input-numberquestions" placeholder="Quantidade de perguntas do quizz" min="3" required>
+                <input type="number" class="input-numberlevels" placeholder="Quantidade de níveis do quizz" min="2" required>
+                <button type="submit" onclick="form1DataValidation()"><p>Prosseguir pra criar perguntas</p></button>
+            </form>
+            
         </div>
 
-        <div class="criar-tela2 hidden">
+        <div class="create-screen2 hidden">
+            <h1>Crie suas perguntas</h1>
+            <div class="input-questions">
 
-
+            </div>           
+            <button type="submit" onclick="checkFields()"><p>Prosseguir pra criar níveis</p></button>
         </div>
-    </main>
+
+        <div class="create-screen3 hidden">
+            <h1>Agora decida os níveis!</h1>
+            <div class="input-levels">
+
+
+            </div>
+            <button type="submit"><p>Finalizar Quizz</p></button>
+        </div>
+    </div>
 
     <!--Scripts-->
-    <script src="script/criar-quiz.js"></script>
+    <script src="js/criar-quiz.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 </html>
