@@ -121,4 +121,19 @@ function storeKey(id, key){
     localStorage.setItem('key',keysStr)
 }
 
+function deleteQuizzes(id){
+    const gettingKey= localStorage.getItem('key')
+    const keyStorage = JSON.parse(gettingKey)
+    const promise = axios.delete(
+        `API/${id}`,
+        {
+            headers: {
+                'Secret-Key':keyStorage[id]
+            }
+        }
+    )
+
+
+}
+
 getQuizzes();
