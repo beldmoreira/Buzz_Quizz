@@ -23,6 +23,20 @@ function getQuizzes(){
     )
 }
 
+function getOneQuizz(quizzId){
+    const promise = axios.get(`API/${quizzId}`)
+    promise.then(
+        function success (result){
+            console.log(result)
+        }
+    )
+    promise.catch(function error(){
+        console.log()
+    }
+)
+
+}
+
 function checkingQuizzesExistence (){
     const idSerial = localStorage.getItem("Ids");
     const idDiserial = JSON.parse(idSerial);
@@ -83,7 +97,7 @@ function buildingQuizzLayout(quizz){
     let quizzSpace = document.querySelector(".quizzes");
     card.innerHTML= `${colorChanges} ${quizzImage} ${title} `;
     card.onclick = function (){
-        startquizz(quizz.id)
+        // startquizz(quizz.id)
     }
     quizzSpace.appendChild(card);
 
@@ -93,4 +107,18 @@ function buildingQuizzLayout(quizz){
     }, 1000);
 
 }
+function storeKey(id, key){
+    let gettingKey = localStorage.getItem('key')
+    let keys;
+    if(gettingKey == null){
+        keys = {}
+    }
+    else{
+        keys = JSON.parse(gettingKey)
+    }
+    keys[id] = key 
+    const keysStr = JSON.stringify(keys)
+    localStorage.setItem('key',keysStr)
+}
+
 getQuizzes();
