@@ -116,3 +116,12 @@ function chosenAnswer(answerOptions) {
     }, 2000);
 
 }
+function backToHomepage(){
+    document.querySelector(".loading-screen").classList.remove("hidden");
+    document.querySelector(".quizz-screen").classList.add("hidden");
+    setTimeout(()=>{
+        document.querySelector(".loading-screen").classList.add("hidden");
+        document.querySelector(".first-screen").classList.remove("hidden");
+        document.querySelector(".space-added").scrollIntoView();
+    }, 1000);
+}
