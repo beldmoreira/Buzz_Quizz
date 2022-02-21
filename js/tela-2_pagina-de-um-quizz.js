@@ -3,6 +3,8 @@ function getSelectedQuizz(quizzID) {
     selectedQuizz.then(showSelectedQuizzOnScreen);
 }
 
+//getSelectedQuizz(2);
+
 function showSelectedQuizzOnScreen(selectedQuizzContent) {
     
     let addBackgroundImage = document.querySelector(".quizz-title-box");
@@ -125,4 +127,7 @@ function backToHomepage(){
         document.querySelector(".space-added").scrollIntoView();
     }, 1000);
 }
+
+console.log("oi")
+
 
