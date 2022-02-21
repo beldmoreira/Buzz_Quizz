@@ -102,7 +102,7 @@ function buildingQuizzLayout(quizz){
     quizzSpace.appendChild(card);
 
     setTimeout(()=>{
-        // document.querySelector(".loading-screen").classList.add("hidden");
+        document.querySelector(".loading-screen").classList.add("hidden");
         document.querySelector(".first-screen").classList.remove("hidden");
     }, 1000);
 
