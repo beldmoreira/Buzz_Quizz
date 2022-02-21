@@ -202,3 +202,8 @@ header h1{
   position: relative;
 }
 
+.container-quizz{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

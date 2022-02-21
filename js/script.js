@@ -97,7 +97,7 @@ function buildingQuizzLayout(quizz){
     let quizzSpace = document.querySelector(".quizzes");
     card.innerHTML= `${colorChanges} ${quizzImage} ${title} `;
     card.onclick = function (){
-        // startquizz(quizz.id)
+        iniciateQuizz(quizz.id)
     }
     quizzSpace.appendChild(card);
 
@@ -107,6 +107,86 @@ function buildingQuizzLayout(quizz){
     }, 1000);
 
 }
+
+    let countquizz = [0,0];
+    let levelinfo, idquizz;
+    function iniciateQuizz(id){
+        
+        document.querySelector(".first-screen").classList.add("hidden");
+        document.querySelector(".loading-screen").classList.remove("hidden");
+    
+        idquizz = id;
+        countquizz = [0,0];
+        let number_question = [];
+              
+        const quizz = axios.get(`API/${id}`);
+    
+        quizz.then((answer)=>{
+            
+            const screen = document.querySelector(".quizz-screen");
+    
+            let header = screen.querySelector(".title-quizz-box");
+            header.innerHTML = `
+                <img src="${answer.data.image}"/>
+                <div class="color-changes"></div>
+                <p>${answer.data.title}</p>
+            `;
+    
+            let questions = answer.data.questions;
+            let areaquestion = document.querySelector(".container-quizz");
+    
+            areaquestion.innerHTML = "";
+            let answerresult = [];
+            countquizz[1] = questions.length;
+    
+            for(let i = 0; i< questions.length; i++){
+                number_question=[];
+    
+                areaquestion.innerHTML += `
+                    <div class="question-container">
+                        <div class="question" style="background-color: ${questions[i].color};" data-identifier="question">
+                        <p>${questions[i].title}</p></div>
+                        <div class="options">                        
+                        </div>
+                    </div>
+                `;
+                
+                for(let j=0; j< questions[i].answers.length; j++){
+                    number_question.push(j);  
+                }
+                number_question.sort(()=> (Math.random() - 0.5));
+    
+                for(let j=0; j< questions[i].answers.length; j++){
+                    if(questions[i].answers[number_question[j]].isCorrectAnswer){
+                        answerresult[j] = "right";
+                    }else{
+                        answerresult[j] = "wrong";
+                    }  
+                }
+    
+                const localanswers = document.querySelectorAll(".answeroptions");
+                for(let j=0; j< questions[i].answers.length; j++){
+                    localanswers[i].innerHTML +=`
+                        <div class="answer ${answerresult[j]}" onclick="chosenAnswer(this,${questions[i].answers[number_question[j]].isCorrectAnswer})" data-identifier="answer">
+                            <img src="${questions[i].answers[number_question[j]].image}"/>
+                            <p>${questions[i].answers[number_question[j]].text}</p>
+                        </div>
+                    `;
+                } 
+            }
+            levelinfo = answer.data.levels;
+        });
+        quizz.catch((erro)=>{
+            console.log(erro.response);
+        });
+        
+        setTimeout(()=>{
+            document.querySelector(".loading-screen").classList.add("hidden");
+            document.querySelector(".quizz-screen").classList.remove("hidden");
+        }, 1500);
+    }     
+
+
 function storeKey(id, key){
     let gettingKey = localStorage.getItem('key')
     let keys;
