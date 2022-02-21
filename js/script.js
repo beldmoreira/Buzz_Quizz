@@ -37,7 +37,7 @@ function getOneQuizz(quizzId){
 
 }
 
-function UpdatingQuizzes (){
+function updatingQuizzes (){
     const idSerial = localStorage.getItem("Ids");
     const idDiserial = JSON.parse(idSerial);
     if(idDiserial!==null){
@@ -85,7 +85,7 @@ function UpdatingQuizzes (){
     }
 
 }
-checkingQuizzesExistence();
+updatingQuizzes();
 
 function buildingQuizzLayout(quizz){
     const card = document.createElement("div"); 
