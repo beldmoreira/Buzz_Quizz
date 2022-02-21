@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--Estilos-->
     <link rel="stylesheet" href="styles/reset.css">
+    <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="styles/criar-quiz.css">
     <!--Fontes-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -36,7 +37,7 @@
             <div class="input-questions">
 
             </div>           
-            <button type="submit" onclick="checkFields()"><p>Prosseguir pra criar níveis</p></button>
+            <button type="submit" onclick="form2DataValidation()"><p>Prosseguir pra criar níveis</p></button>
         </div>
 
         <div class="create-screen3 hidden">
@@ -45,11 +46,16 @@
 
 
             </div>
-            <button type="submit"><p>Finalizar Quizz</p></button>
+            <button type="submit" onclick="form3DataValidation()"><p>Finalizar Quizz</p></button>
         </div>
 
         <div class="create-screen4 hidden">
-        
+            <h1>Seu quizz está pronto!</h1>
+            <div class="all-done-quizz quizz-card">
+
+            </div>
+            <button onclick="playCreatedQuizz()" class="play-quizz"><p>Acessar quizz</p></button>
+            <button onclick="returnHome()" class="return-home"><p>Voltar pra home</p></button>
         </div>
     </div>
 
