@@ -152,30 +152,6 @@ function checkAnswers(){
     return true;
 }
 
-/*function checkURL(){
-    let imgRight = document.querySelectorAll(".input-img-rigthanswer")
-    let imgWrong1 = document.querySelectorAll(".imgwrong1")
-    let imgWrong2 = document.querySelectorAll(".imgwrong2")
-    let imgWrong3 = document.querySelectorAll(".imgwrong3")
-    for(let i=0; i < numberOfQuestions; i++){
-        let one = imgRight[i].checkValidity();
-        let two = imgWrong1[i].checkValidity();
-        if(one === true && two === true){
-            if(imgWrong2[i].value == '' && imgWrong3.value == ''){
-                return true
-            }else if(imgWrong2[i].value !== '' || imgWrong3[i].value !== ''){
-                let a = imgWrong2[i].value !== '';
-                let b = imgWrong3[i].value !== '';
-                if(a == three && b == four){
-                    return true
-                }else{
-                    return false}
-            }else{
-                return false}
-        }
-    }
-    return false;
-}*/
 
 
 function form2DataValidation(){
@@ -228,12 +204,24 @@ function checkDescription(){
     }
 }
 
+function checkPercentage0(){
+    let valueLevel = document.querySelectorAll(".input-level-minimum")
+    for(let i=0; i < numberOfLevels; i++){
+        if(valueLevel[i] === 0){
+            return true
+        }else{}
+    
+    return false
+    }
+}
+
 function form3DataValidation(){
     let a = checkCharactersTitle();
     let b = checkPercentage();
     let c = checkDescription();
+    let c = checkPercentage0
 
-    if(a == true && b == true && c == true){
+    if(a == true && b == true && c == true && d == true){
         const currentScreen = document.querySelector(".create-screen3");
         const nextScreen = document.querySelector(".create-screen4")
         currentScreen.classList.add("hidden");
