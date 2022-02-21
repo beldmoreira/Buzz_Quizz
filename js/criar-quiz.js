@@ -52,7 +52,6 @@ function printQuestions(){
     }
 
     for(let i=0; i < numberOfQuestions; i++){
-        quizzCreated.questions.push(object)
         inputQuestions.innerHTML += `
             <div class="question"> <!--Começo da pergunta-->
                 <div class="question-top">
@@ -63,17 +62,17 @@ function printQuestions(){
                     <input type="text" placeholder="Texto da pergunta" class="input-question-text" required>
                     <input type="text" placeholder="Cor de fundo da pergunta" value="#" class="input-question-background" required>
                     <h1>Resposta correta</h1>
-                    <input type="text" placeholder="Resposta correta" class="input-rightanswer" required>
-                    <input type="url" placeholder="URL da imagem" class="input-img-rigthanswer" required>
+                    <input type="text" placeholder="Resposta correta" class="input-rightanswer answer" required>
+                    <input type="url" placeholder="URL da imagem" class="input-img rigthanswer" required>
                     <h1>Respostas incorretas</h1>
-                    <input type="text" placeholder="Resposta incorreta 1" class="input-wronganswer wrong1" required>
-                    <input type="url" placeholder="URL da imagem 1" class="input-img-wronganswer imgwrong1" required>
+                    <input type="text" placeholder="Resposta incorreta 1" class="input-wronganswer wrong1 answer" required>
+                    <input type="url" placeholder="URL da imagem 1" class="input-img wronganswer imgwrong1" required>
                     <br>
-                    <input type="text" placeholder="Resposta incorreta 2" class="input-wronganswer wrong2">
-                    <input type="url" placeholder="URL da imagem 2" class="input-img-wronganswer imgwrong2">
+                    <input type="text" placeholder="Resposta incorreta 2" class="input-wronganswer wrong2 answer">
+                    <input type="url" placeholder="URL da imagem 2" class="input-img wronganswer imgwrong2">
                     <br>
-                    <input type="text" placeholder="Resposta incorreta 3" class="input-wronganswer wrong3">
-                    <input type="url" placeholder="URL da imagem 3" class="input-img-wronganswer imgwrong3">                                                            
+                    <input type="text" placeholder="Resposta incorreta 3" class="input-wronganswer wrong3 answer">
+                    <input type="url" placeholder="URL da imagem 3" class="input-img wronganswer imgwrong3">                                                            
                     <br>
                 </div>
             </div> <!--Fim da pergunta-->  
@@ -117,7 +116,6 @@ function checkCharactersQuestion(){
     const titles = document.querySelectorAll(".input-question-text");
     for(let i=0; i < numberOfQuestions; i++){
         if(titles[i].value.length >= 20){
-            quizzCreated.questions[i].title = titles[i].value;
         }else{
             return false
         }
@@ -129,9 +127,7 @@ function checkCharactersQuestion(){
 function checkColor(){
     let colors = document.querySelectorAll(".input-question-background");
     for(let i=0; i < numberOfQuestions; i++){
-
         if(colors[i].value.length === 7 && colors[i].value[0] === '#'){
-            quizzCreated.questions[i].color = colors[i].value;
         }else{
             return false;
         }
@@ -144,7 +140,6 @@ function checkAnswers(){
     let wrongAnswers = document.querySelectorAll(".wrong1");
     for(let i=0; i < numberOfQuestions; i++){
         if(rightAnswers[i].value !== '' && wrongAnswers[i].value !== ''){
-            //quizzCreated.questions[i].answers[i].text = rightAnswers[i].value;
         }else{
             return false;
         }
@@ -152,13 +147,59 @@ function checkAnswers(){
     return true;
 }
 
+function getQuestions(){
+    for(let i = 0; i < numberOfQuestions; i++){
+        let title = document.querySelector(`.question${i+1} .input-question-text`).value;
+        let color = document.querySelector(`.question${i+1} .input-question-background`).value;
+       // let answers = getAnswers(`.question${i+1}`);
 
+        question = {
+            title: title,
+            color: color,
+         // answers: answers
+        }
+
+        quizzCreated.questions.push(question);
+    }
+}
+
+function getAnswers(where){
+    let allAnswers = []
+
+    let ans = document.querySelectorAll(`${where} .answer`);
+    let img = document.querySelectorAll(`${where} .input-img`)
+
+    for(let i = 0; i < (numberOfQuestions*4); i++){
+        let title = ans[i].value;
+        let background = img[i].value;
+        if(title !== '' && ans[i].classList.contains(".input-rightanswer")){
+            let obj = {
+                text: title,
+                image: img[i].value,
+                isCorrectAnswer: true
+            }
+
+            allAnswers.push(obj);
+
+        }else if(ans[i].value !== '' && !ans[i].classList.contains(".input-rightanswer")){
+            let obj = {
+                text: ans[i].value,
+                image:img[i].value,
+                isCorrectAnswer: false
+            }
+            allAnswers.push(obj);
+        }
+    }
+
+    return allAnswers
+}
 
 function form2DataValidation(){
     let a = checkCharactersQuestion();
     let b = checkColor();
     let c = checkAnswers();
     if(a == true && b == true && c == true){
+        getQuestions();
         const currentScreen = document.querySelector(".create-screen2");
         const nextScreen = document.querySelector(".create-screen3")
         currentScreen.classList.add("hidden");
@@ -181,6 +222,8 @@ function checkCharactersTitle(){
         }
     }
 }
+
+function checkURL(url){}
 
 function checkPercentage(){
     let valueLevel = document.querySelectorAll(".input-level-minimum")
@@ -219,7 +262,7 @@ function form3DataValidation(){
     let a = checkCharactersTitle();
     let b = checkPercentage();
     let c = checkDescription();
-    let c = checkPercentage0
+    let d = checkPercentage0();
 
     if(a == true && b == true && c == true && d == true){
         const currentScreen = document.querySelector(".create-screen3");
