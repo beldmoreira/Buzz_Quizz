@@ -1,10 +1,10 @@
 const API ="https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes";
 const firstScreen = document.querySelector(".first-screen");
-const lastScreen = document.querySelector(".last-screen");
+const lastScreen = document.querySelector(".create-screen1");
 
-const CreateQuizz=()=>{
-lastScreen.classList.remove("hidden");
-firstScreen.classList.add("hidden");
+function CreateQuizz(){
+    firstScreen.classList.add("hidden");
+    lastScreen.classList.remove("hidden");
 }
 
 function getQuizzes(){
@@ -75,10 +75,10 @@ function checkingQuizzesExistence (){
                             </svg>
                         </div>
                     </div>`  
-                     });
-                     promise.catch((response)=>{
-                         console.log("Erro - Seus Quizzes");
-                     });   
+                    });
+                    promise.catch((response)=>{
+                        console.log("Erro - Seus Quizzes");
+                    });   
             }
         }
         
@@ -86,7 +86,7 @@ function checkingQuizzesExistence (){
 
 }
 checkingQuizzesExistence();
-  
+
 function buildingQuizzLayout(quizz){
     const card = document.createElement("div"); 
     const quizzImage = `<img class="quizz-image" src ="${quizz.image}">`;

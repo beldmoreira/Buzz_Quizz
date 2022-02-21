@@ -1,81 +1,117 @@
-body{
-    font-family: 'Roboto', sans-serif;
-    background: #FAFAFA;
-}
+/*Main*/
 
-header{
-    height: 69px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    background: #EC362D;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
-header h1{
-    font-weight: bold;
-    font-size: 37px;
-    color: #FFFFFF;
-}
-
-main{
+.create-quizz{
     margin-top: 75px;
+    width: 100%;
+    height: 100%;
+}
+
+.create-screen1 .create-screen2{
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 }
 
-main h1{
-    margin: 30px 0;
+.create-quizz h1{
+    padding: 30px;
     font-weight: bold;
     font-size: 20px;
     color: #000000;
+    text-align: center;
 }
 
-section{
-    background: #FFFFFF;
-    width: 100%;
+/*Input basic info*/
+.create-screen1 form, .form-screen2, .form-screen3{
+    width: 100vw;
     padding: 22px 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background: #FFFFFF;
+    
 }
 
-section input{
+.create-quizz form h1, .form-screen2 h1{
+    text-align: left;
+    width: 90%;
+    padding: 0;
+    margin: 20px 0 8px 0;
+}
+
+
+input{
     width: 90%;
     height: 46px;
     border: 1px solid #D1D1D1;
     border-radius: 5px;
-    margin-bottom: 9px;
+    margin: 5px;
     font-family: 'Roboto';
     font-size: 19px;
 }
 
-
-input::placeholder{
+input::placeholder, textarea::placeholder{
     font-family: 'Roboto';
     font-style: italic;
     font-weight: 400;
     font-size: 19px;
     color: #BABABA;
     padding-left: 14px;
-
 }
 
-input:focus{
+input:focus, textarea:focus{
     outline: none;
 }
 
+.create-screen1 form p{
+    color: #EC362D;
+    font-size: 16px;
+}
 
+/*Input quizz questions*/
 
-button{
+.create-screen2 .question, .create-screen3 .level{
+    background: #FFFFFF;
+    margin-bottom: 25px;
+}
+
+.create-screen2 .question-top, .create-screen3 .level-top{
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    align-items: center;
+}
+
+.edit-question {
+    border: none;
+    background: none;
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    z-index: 0;
+}
+
+.edit-question ion-icon{
+    font-size: 26px;
+}
+
+.question-form2 h1{
+    margin: 20px 0 5px 0;
+}
+
+/*Input levels*/
+textarea{
+    width: 90%;
+    height: 177px;
+    border: 1px solid #D1D1D1;
+    border-radius: 5px;
+}
+
+/*Button*/
+.create-screen1 button, .create-screen2>button, .create-screen3>button{
     width: 80%;
     border: none;
     border-radius: 15px;
@@ -85,7 +121,12 @@ button{
     margin-top: 30px;
 }
 
-button p{
+.create-screen1 button p, .create-screen2>button p, .create-screen3>button p{
     font-size: 18px;
     color: #FFFFFF;
+}
+
+/*Utilitários*/
+.hidden{
+    display: none;
 }
