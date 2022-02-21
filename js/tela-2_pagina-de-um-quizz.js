@@ -1,7 +1,3 @@
-let score = 0;
-let arrayOflevels;
-
-
 function getSelectedQuizz(quizzID) {
     let selectedQuizz = axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${quizzID}`);
     selectedQuizz.then(showSelectedQuizzOnScreen);
@@ -126,64 +122,3 @@ function chosenAnswer(answerOptions) {
 console.log("oi")
 
 
-function calculatingScore(answers) {
-
-    console.log("ooi")
-
-
-    let countingQuestions = document.querySelector(".question-container");
-    let totalOfQuestions = countingQuestions.children.length;
-
-    
-    if (answers.classList.contains("true")) {
-        score = score++;
-    }
-
-    totalScore = Math.floor((score / totalOfQuestions) * 100);
-    console.log(totalScore)
-
-    for(let i = 0; i < arrayOflevels.length; i++){
-        let maior = 0;
-        let maiorIndice = 0;
-        
-        if(arrayLevels[i].minValue == 0){
-            let addResultado = document.querySelector(".conteirerResultado");
-            addResultado.innerHTML = "";
-            addResultado.innerHTML +=`
-            <span class="porcentagemDeAcerto">${total + "% de acertos: " + arrayLevels[i].title}</span>
-            <ul>
-                <li>
-                    <img src="${arrayLevels[i].image}">
-                </li>
-                <li>
-                    <strong>${arrayLevels[i].text}</strong> 
-                </li>
-            </ul>`
-
-        } else if(total >= arrayLevels[i].minValue){
-            if(arrayLevels[i].minValue > maior){
-                maior = arrayLevels[i].minValue;
-                maiorIndice = i;
-            }
-            let addResultado = document.querySelector(".conteirerResultado");
-            addResultado.innerHTML = "";
-            addResultado.innerHTML +=`
-            <span class="porcentagemDeAcerto">${total + "% de acertos: " + arrayLevels[maiorIndice].title}</span>
-            <ul>
-                <li>
-                    <img src="${arrayLevels[maiorIndice].image}">
-                </li>
-                <li>
-                    <strong>${arrayLevels[maiorIndice].text}</strong> 
-                </li>
-            </ul>`
-        }
-    }
-
-    if (retorno == retorno.parentNode.parentNode.parentNode.lastChild){
-        setTimeout(function (){
-            retorno.parentNode.parentNode.parentNode.nextElementSibling.scrollIntoView({behavior: 'smooth', block:'center'})
-        }, 2000);
-    }
- 
-}
